@@ -18,10 +18,10 @@ export default function Home() {
 							<Link
 								key={project.id}
 								to={project.path}
-								className="p-4 border rounded"
+								className="p-4 rounded-xl bg-gray-900 border border-gray-800 hover:border-blue-500 hover:-translate-y-1 transition-all duration-200"
 							>
-								<h2>{project.title}</h2>
-								<p>{project.description}</p>
+								<h3 className="text-white font-medium">{project.title}</h3>
+								<p className="text-gray-400 text-sm">{project.description}</p>
 							</Link>
 						))}
 					</div>
