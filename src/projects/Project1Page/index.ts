@@ -1,5 +1,5 @@
-import Project1Page from '.';
-import type { ProjectModule } from '../../../core/types';
+import Project1Page from './Project1Page';
+import type { ProjectModule } from '../../core/types';
 
 const project: ProjectModule = {
 	id: 'project-1',
