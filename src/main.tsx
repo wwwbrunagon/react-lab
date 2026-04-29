@@ -5,7 +5,10 @@ import App from './App.tsx';
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
-		<h1 className="text-3xl font-bold text-blue-500">Tailwind is working</h1>
-		<App />
+		<div className="min-h-screen bg-gray-950 text-gray-100">
+			<div className="max-w-5xl mx-auto px-6 py-10">
+				<App />
+			</div>
+		</div>
 	</StrictMode>,
 );
