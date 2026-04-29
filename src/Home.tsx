@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { projects } from './projects';
 
 export default function Home() {
 	return (
@@ -13,39 +14,21 @@ export default function Home() {
 				<section>
 					<h2 className="text-xl font-medium">Projects</h2>
 					<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
-						<Link
-							to="/project-1"
-							className="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-blue-500 transition-all duration-200 hover:-translate-y-1"
-						>
-							<h3 className="text-lg font-medium">Project 1</h3>
-							<p className="text-sm text-gray-400 mt-1">
-								Short description of the project
-							</p>
-						</Link>
-
-						<Link
-							to="/project-2"
-							className="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-blue-500 transition-all duration-200 hover:-translate-y-1"
-						>
-							<h3 className="text-lg font-medium">Project 2</h3>
-							<p className="text-sm text-gray-400 mt-1">
-								Short description of the project
-							</p>
-						</Link>
+						{projects.map((project) => (
+							<Link
+								key={project.id}
+								to={project.path}
+								className="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-blue-500 transition-all duration-200 hover:-translate-y-1"
+							>
+								<h3 className="text-lg font-medium">{project.title}</h3>
+								<p className="text-sm text-gray-400 mt-1">
+									{project.description}
+								</p>
+							</Link>
+						))}
 					</div>
 				</section>
 			</div>
 		</div>
 	);
 }
-
-/**
-  <ul>
-				<li>
-					<Link to="/project-1">Project 1</Link>
-				</li>
-				<li>
-					<Link to="/project-2">Project 2</Link>
-				</li>
-			</ul>
- */
