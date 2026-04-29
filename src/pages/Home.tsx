@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { projects } from './projects';
+import { projects } from '../core/registry';
 
 export default function Home() {
 	return (
@@ -18,12 +18,10 @@ export default function Home() {
 							<Link
 								key={project.id}
 								to={project.path}
-								className="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-blue-500 transition-all duration-200 hover:-translate-y-1"
+								className="p-4 border rounded"
 							>
-								<h3 className="text-lg font-medium">{project.title}</h3>
-								<p className="text-sm text-gray-400 mt-1">
-									{project.description}
-								</p>
+								<h2>{project.title}</h2>
+								<p>{project.description}</p>
 							</Link>
 						))}
 					</div>
@@ -32,3 +30,5 @@ export default function Home() {
 		</div>
 	);
 }
+
+//UI is a projection of registry data.
