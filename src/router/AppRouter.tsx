@@ -2,10 +2,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
 import { projects } from '../core/registry';
 import { Suspense } from 'react';
+import Breadcrumbs from '../Breadcrumbs';
 
 export default function AppRouter() {
 	return (
 		<BrowserRouter>
+			<Breadcrumbs />
 			<Routes>
 				<Route path="/" element={<Home />} />
 
