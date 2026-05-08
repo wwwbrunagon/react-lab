@@ -26,7 +26,7 @@ export function reducer(state: State, action: Action): State {
 		case 'DELETE_TODO':
 			return {
 				...state,
-				todos: state.todos.filter((t) => t.id === action.id),
+				todos: state.todos.filter((t) => t.id !== action.id),
 				selectedIds: new Set(
 					[...state.selectedIds].filter((id) => id !== action.id),
 				),
@@ -39,7 +39,7 @@ export function reducer(state: State, action: Action): State {
 			if (selected.has(action.id)) selected.delete(action.id);
 			else selected.add(action.id);
 
-			return { ...state, selectedIds: new Set() };
+			return { ...state, selectedIds: selected };
 		}
 
 		case 'CLEAR_SELECTION':

@@ -30,6 +30,7 @@ export function TodoItem({ todo, index, selected, dispatch }: Props) {
 			<input
 				type="checkbox"
 				checked={todo.completed}
+				onClick={(e) => e.stopPropagation()}
 				onChange={() =>
 					dispatch({
 						type: 'TOGGLE_TODO',
@@ -51,13 +52,14 @@ export function TodoItem({ todo, index, selected, dispatch }: Props) {
 			<div className="flex items-center gap-2">
 				<button
 					disabled={index === 0}
-					onClick={() =>
+					onClick={(e) => {
+						e.stopPropagation();
 						dispatch({
 							type: 'REORDER',
 							from: index,
 							to: index - 1,
-						})
-					}
+						});
+					}}
 					className="
             rounded-md border border-gray-300 px-2 py-1 text-sm
             transition-colors hover:bg-gray-100
@@ -68,13 +70,14 @@ export function TodoItem({ todo, index, selected, dispatch }: Props) {
 				</button>
 
 				<button
-					onClick={() =>
+					onClick={(e) => {
+						e.stopPropagation();
 						dispatch({
 							type: 'REORDER',
 							from: index,
 							to: index + 1,
-						})
-					}
+						});
+					}}
 					className="
             rounded-md border border-gray-300 px-2 py-1 text-sm
             transition-colors hover:bg-gray-100
@@ -84,12 +87,13 @@ export function TodoItem({ todo, index, selected, dispatch }: Props) {
 				</button>
 
 				<button
-					onClick={() =>
+					onClick={(e) => {
+						e.stopPropagation();
 						dispatch({
 							type: 'DELETE_TODO',
 							id: todo.id,
-						})
-					}
+						});
+					}}
 					className="
             rounded-md border border-red-300 px-3 py-1 text-sm text-red-600
             transition-colors hover:bg-red-50
