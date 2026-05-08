@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "diffity-learn": {
+      "source": "kamranahmedse/diffity",
+      "sourceType": "github",
+      "skillPath": "skills/diffity-learn/SKILL.md",
+      "computedHash": "1722d5a0904d373ed3885e8502336d4369326c19bb86338cb3650e1a95dd5d17"
+    }
+  }
+}
