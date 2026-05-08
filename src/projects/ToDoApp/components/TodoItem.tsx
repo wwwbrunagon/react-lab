@@ -4,11 +4,12 @@ import type { Action, Todo } from '../core/type';
 type Props = {
 	todo: Todo;
 	index: number;
+	total: number;
 	selected: boolean;
 	dispatch: Dispatch<Action>;
 };
 
-export function TodoItem({ todo, index, selected, dispatch }: Props) {
+export function TodoItem({ todo, index, total, selected, dispatch }: Props) {
 	return (
 		<div
 			onClick={(e) =>
@@ -19,11 +20,11 @@ export function TodoItem({ todo, index, selected, dispatch }: Props) {
 				})
 			}
 			className={`
-        mb-2 flex items-center gap-3 rounded-lg border p-4 transition-colors
+        flex items-center gap-3 rounded-xl border p-4 shadow-sm transition-all
         ${
 					selected
-						? 'border-blue-500 bg-blue-100'
-						: 'border-gray-200 bg-white hover:bg-gray-50'
+						? 'border-blue-500 bg-blue-50 shadow-blue-100'
+						: 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50'
 				}
       `}
 		>
@@ -37,19 +38,19 @@ export function TodoItem({ todo, index, selected, dispatch }: Props) {
 						id: todo.id,
 					})
 				}
-				className="h-4 w-4 cursor-pointer"
+				className="h-5 w-5 cursor-pointer rounded border-slate-300 text-blue-600 focus:ring-blue-500"
 			/>
 
 			<span
 				className={`
-          flex-1 text-sm text-gray-800
-          ${todo.completed ? 'text-gray-400 line-through' : ''}
+          flex-1 break-words text-sm font-medium text-slate-800
+          ${todo.completed ? 'text-slate-400 line-through' : ''}
         `}
 			>
 				{todo.title}
 			</span>
 
-			<div className="flex items-center gap-2">
+			<div className="flex shrink-0 items-center gap-2">
 				<button
 					disabled={index === 0}
 					onClick={(e) => {
@@ -61,15 +62,17 @@ export function TodoItem({ todo, index, selected, dispatch }: Props) {
 						});
 					}}
 					className="
-            rounded-md border border-gray-300 px-2 py-1 text-sm
-            transition-colors hover:bg-gray-100
+            flex h-9 w-9 items-center justify-center rounded-lg border border-slate-300 text-sm font-semibold text-slate-600
+            transition-colors hover:bg-slate-100
             disabled:cursor-not-allowed disabled:opacity-40
-          "
+					"
+					aria-label="Move up"
 				>
 					↑
 				</button>
 
 				<button
+					disabled={index === total - 1}
 					onClick={(e) => {
 						e.stopPropagation();
 						dispatch({
@@ -79,9 +82,11 @@ export function TodoItem({ todo, index, selected, dispatch }: Props) {
 						});
 					}}
 					className="
-            rounded-md border border-gray-300 px-2 py-1 text-sm
-            transition-colors hover:bg-gray-100
-          "
+            flex h-9 w-9 items-center justify-center rounded-lg border border-slate-300 text-sm font-semibold text-slate-600
+            transition-colors hover:bg-slate-100
+            disabled:cursor-not-allowed disabled:opacity-40
+					"
+					aria-label="Move down"
 				>
 					↓
 				</button>
@@ -95,7 +100,7 @@ export function TodoItem({ todo, index, selected, dispatch }: Props) {
 						});
 					}}
 					className="
-            rounded-md border border-red-300 px-3 py-1 text-sm text-red-600
+            rounded-lg border border-red-200 px-3 py-2 text-sm font-semibold text-red-600
             transition-colors hover:bg-red-50
           "
 				>
